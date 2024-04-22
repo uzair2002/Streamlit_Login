@@ -1,5 +1,4 @@
 import streamlit as st
-import nav
 import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
@@ -12,7 +11,6 @@ from yaml.loader import SafeLoader
 
 if "authentication_status" in st.session_state:
     if st.session_state["authentication_status"]:
-        nav.make_sidebar()
         st.write(f'Welcome *{st.session_state["name"]}*')
         st.title('Some content')
         st.header("page 1")
