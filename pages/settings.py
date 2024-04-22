@@ -28,7 +28,8 @@ if "authentication_status" in st.session_state:
         st.sidebar.markdown("<div style='margin-bottom:800px;'></div>", unsafe_allow_html=True)
         st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
         authenticator.logout("Logout", "sidebar")
-
+        if not st.session_state["authentication_status"]:
+            st.switch_page("main.py")  
         # Step 5: Create a reset password widget
     
         try:
