@@ -9,6 +9,26 @@ import base64
 import streamlit as st
 st.set_page_config(layout="wide",initial_sidebar_state="collapsed")
 
+hide_sidebar="""
+<style>
+.stDeployButton{
+    visibility:hidden;
+}
+
+.st-emotion-cache-g0dirf.eczjsme1{
+    visibility:hidden;
+}
+
+#MainMenu{
+    visibility:hidden;
+}
+
+
+</style>
+"""
+st.markdown(hide_sidebar,unsafe_allow_html=True)
+
+
 
 page_bg_img = f"""
 <style>
@@ -72,6 +92,12 @@ if st.session_state.page == "login":
                 st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
                 authenticator.logout("Logout", "sidebar")
                 st.title('Some content')
+                st.markdown("""<style>
+                .st-emotion-cache-g0dirf.eczjsme1{
+                visibility:visible;
+                }
+                 </style>
+                 """,unsafe_allow_html=True)
             
             elif st.session_state["authentication_status"] is False:
                 #st.markdown(page_bg_img, unsafe_allow_html=True)
