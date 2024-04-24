@@ -1,30 +1,18 @@
 import streamlit as st
+st.set_page_config(layout="wide",initial_sidebar_state="expanded")
 
-
-
-import streamlit_authenticator as stauth
-import yaml
-from yaml.loader import SafeLoader
-
+import sys
+sys.path.append('..')
+from sidebar import Sidebar_Title
+from authenticator import read_configuration,create_authenticator,update_configuration
 if "authentication_status" in st.session_state:
     if st.session_state["authentication_status"]:
-        
         st.header("Settings")
-
-        with open('data.yaml') as file:
-            config = yaml.load(file, Loader=SafeLoader)
-
-
+        config=read_configuration()
         # Step 2: Create an authenticator object
-        authenticator = stauth.Authenticate(
-            config['credentials'],
-            config['cookie']['name'],
-            config['cookie']['key'],
-            config['cookie']['expiry_days'],
-            config['preauthorized']
-        )
-
-        st.sidebar.markdown("<div style='margin-bottom:800px;'></div>", unsafe_allow_html=True)
+        authenticator = create_authenticator(config)
+        Sidebar_Title()
+        st.sidebar.markdown("<div style='margin-bottom:600px;'></div>", unsafe_allow_html=True)
         st.sidebar.write(f'Welcome *{st.session_state["name"]}*')
         authenticator.logout("Logout", "sidebar")
         if not st.session_state["authentication_status"]:
@@ -49,8 +37,7 @@ if "authentication_status" in st.session_state:
 
 
         # Step 10: Update the configuration file
-        with open('data.yaml', 'w') as file:
-            yaml.dump(config, file, default_flow_style=False)
+        update_configuration(config)
 
 
 
