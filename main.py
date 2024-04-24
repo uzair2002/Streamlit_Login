@@ -15,7 +15,7 @@ hide_sidebar="""
     visibility:hidden;
 }
 
-.st-emotion-cache-g0dirf.eczjsme1{
+.st-emotion-cache-g0dirf.eczjsme1a{
     visibility:hidden;
 }
 
@@ -48,7 +48,8 @@ background: rgba(0,0,0,0);
 """
 def Signup_button():
     st.header("New Here ?")
-    st.text("Signup to get started")
+    st.text(f"Ready to analyze your data with AI?\nSign in here to access our EDA website.")
+    
     st.button("Go to Signup", on_click=switch_page)
 
 
@@ -65,8 +66,6 @@ authenticator = stauth.Authenticate(
     config['cookie']['expiry_days'],
     config['preauthorized']
 )
-
-
 
 # Initialize session state variable for page number
 if "page" not in st.session_state:
@@ -124,8 +123,8 @@ elif st.session_state.page == "signup":
         except Exception as e:
             st.error(e)
     with LoginButton_column:
-        st.header("Already Have An Account?")
-        st.text("Please login to continue")
+        st.header("Already have an account? ")
+        st.text("Let's get started! Please log in to continue.")
         st.button("Go to Login", on_click=switch_page)
 
 

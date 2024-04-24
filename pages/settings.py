@@ -9,9 +9,8 @@ from yaml.loader import SafeLoader
 if "authentication_status" in st.session_state:
     if st.session_state["authentication_status"]:
         
-        st.write(f'Welcome *{st.session_state["name"]}*')
-        st.title('Some content')
-        st.header("page 1")
+        st.header("Settings")
+
         with open('data.yaml') as file:
             config = yaml.load(file, Loader=SafeLoader)
 
@@ -56,4 +55,4 @@ if "authentication_status" in st.session_state:
 
 
     else:
-        st.write("please login")
+        st.write("Please [Log in](main) to get started!!")

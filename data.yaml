@@ -31,7 +31,7 @@ credentials:
     uzair:
       email: uzairfarooqui@gamail.com
       failed_login_attempts: 0
-      logged_in: true
+      logged_in: false
       name: uzair
       password: $2b$12$fObcGEVsvcnsK239/.plzOM76MsG9bULi7omPoZfVyEguGNGzyw8S
     wdewe:
